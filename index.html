@@ -21,13 +21,13 @@
             <img src="img/logo-orange.png" alt="logo" class="w-14 bg-blue-500 rounded-2xl m-2">
             <div class="text-white">
                 <h1 class="text-3xl text font-bold">BusDirect</h1>
-                <p class="text-xs">Ligne: <b>safi → marrakech</b></p>
+                <p class="text-xs"><b>Le Plus adabter pour vous</b></p>
             </div>
         </div>
 
         <nav class="text-blue-300 flex gap-3 place-content-between ">
             <div class="content-center bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
-                <h4>Libre</h4>
+                <h4>Libre (80 DH)</h4>
             </div>
             <div class=" content-center  bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
                 <h4>Occupé</h4>
@@ -45,19 +45,22 @@
 
 
     <main>
-        <section class=" flex gap-8 h-12 items-center px-4 bg-blue-50 my-5 mx-2 rounded-xl">
-            <div class="flex gap-1">
-                <span class="material-symbols-outlined">person_add</span>
-                <h5>Libre</h5>
-            </div>
-            <div class="flex gap-1">
-                <span class="material-symbols-outlined">person_add_disabled</span>
-                <h5>Occupé</h5>
-            </div>
+        <section
+            class=" flex gap-8 h-12 items-center justify-between px-4 bg-blue-50 my-5 mx-2 rounded-xl inset-shadow-indigo-400">
+            <p class="text-xs">Ligne: <b>safi → marrakech</b></p>
+            <div class="flex gap-8 h-12 items-center px-4 bg-blue-50 my-5 mx-2 rounded-xl">
+                <div class="flex gap-1">
+                    <span class="material-symbols-outlined">person_add</span>
+                    <h5>Libre</h5>
+                </div>
+                <div class="flex gap-1">
+                    <span class="material-symbols-outlined">person_add_disabled</span>
+                    <h5>Occupé</h5>
+                </div>
         </section>
 
-        <section class="flex justify-self-center">
-            <nav  class=" bg-blue-50 px-3 py-3 text-blue-950 gap-3">
+        <section class="flex flex-wrap justify-self-center px-6 py-6">
+            <nav class="flex flex-col bg-red-50 px-4 py-3 text-blue-950 gap-3 w-[60%]">
                 <div class="flex place-content-between">
                     <div class="font-bold flex gap-1">
                         <span class="material-symbols-outlined text-blue-500">chair</span>
@@ -71,7 +74,7 @@
                     <p>AVANT DU BUS</p>
                 </div>
 
-                <article id="places">
+                <article id="places" class="">
                     <div id="card"
                         class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-21 px-2 py-2 text-center">
                         <h6 class="font-semibold">Siege 1</h6>
@@ -194,22 +197,43 @@
                     </div>
                 </article>
             </nav>
-            <form class="bg-blue-50">
-                    <div id="choix" class=" items-center mx-1 my-5 px-1 py-2 min-w-sm bg-blue-100 place-content-between rounded-2xl gap-2 box-border">
-                        <div class=" flex content-center place-content-center border-solid border-2 border-blue-950 bg-blue-50 rounded-3xl px-4 py-1">
-                            <span class="material-symbols-outlined">person_add</span>
-                            <p>Reserve</p>
-                        </div>
-                        <div class=" flex content-center place-content-center border-solid border-2 border-blue-950  bg-blue-50 rounded-3xl px-4 py-1">
-                            <span class="material-symbols-outlined">person_edit</span>
-                            <p>Modifier</p>
-                        </div>
-                        <div class=" flex content-center place-content-center border-solid border-2 border-blue-950  bg-blue-50 rounded-3xl px-4 py-1">
-                            <span class="material-symbols-outlined">person_remove</span>
-                            <p>Annuler</p>
-                        </div>
+            <form class="bg-blue-50 w-[40%] px-4">
+                <div>
+                    <h3 class="text-xl font-semibold">Reservation d'un place</h3>
+                    <div class="flex flex-col  px-4 py-4">
+                        <label for="nom" class="">Passager</label>
+                        <input type="text" name="nom" class="h-8 w-60 rounded-4 bg-blue-100"
+                            placeholder="Ex: THomas Martin">
+                        <label for="diege">Siege selectionne</label>
+                        <select name="siege" id="" class="h-8 w-60 rounded-4 bg-blue-100"
+                            placeholder="--siege libre--"></select>
+                        <input type="submit" name="" id="" value="confiemer" class="bg-blue-600 w-30 rounded-2xl ">
                     </div>
-                </form>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold">Modifier une place</h3>
+                    <div class="flex flex-col px-4 py-4">
+                        <label for="nom" class="">Passager existant</label>
+                        <select name="" id="" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder=""></select>
+                        <label for="diege">Nomde passager</label>
+                        <input type="text" name="diege" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder="Ex: THomas Martin">
+                        <label for="passager" class="">Nouveau siege</label>
+                        <select name="passager" id="" class=" h-8 w-60 bg-blue-100"></select>
+                        <input type="button" value="Valider" class="bg-blue-600 h-8 w-30 rounded-2xl">
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold">Supprimer une reservation</h3>
+                    <div class="flex flex-col px-4 py-4">
+                        <label for="nom" class="">Passager reserve</label>
+                        <select name="" id="" class="h-8 w-60 bg-blue-100"></select>
+                        <input type="submit" value="Supprimer" class="bg-blue-600 h-8 w-30 rounded-2xl">
+                    </div>
+                </div>
+
+            </form>
         </section>
     </main>
 
