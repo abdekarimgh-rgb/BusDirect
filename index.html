@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/input.css">
+    <link rel="stylesheet" href="/output.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css"
+        integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>BusDirect</title>
+</head>
+
+<body class="bg-blue-100">
+    <header class="bg-blue-800 flex flex-wrap place-content-between content-center">
+        <div class="flex">
+            <img src="img/logo-orange.png" alt="logo" class="w-14 bg-blue-500 rounded-2xl m-2">
+            <div class="text-white">
+                <h1 class="text-3xl text font-bold">BusDirect</h1>
+                <p class="text-xs">Ligne: <b>safi → marrakech</b></p>
+            </div>
+        </div>
+
+        <nav class="text-blue-300 flex gap-3 place-content-between ">
+            <div class="content-center bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
+                <h4>Libre</h4>
+            </div>
+            <div class=" content-center  bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
+                <h4>Occupé</h4>
+            </div>
+            <div class=" content-center bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
+                <h4>Recet Total</h4>
+            </div>
+            <div class="flex items-center">
+                <span class="material-symbols-outlined font-bold">
+                    account_circle
+                </span>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class=" flex gap-8 h-12 items-center px-4 bg-blue-50 my-5 mx-2 rounded-xl">
+            <div class="flex gap-1">
+                <span class="material-symbols-outlined">person_add</span>
+                <h5>Libre</h5>
+            </div>
+            <div class="flex gap-1">
+                <span class="material-symbols-outlined">person_add_disabled</span>
+                <h5>Occupé</h5>
+            </div>
+        </section>
+
+        <section>
+            <nav class="bg-blue-50 px-3 py-3 text-blue-950 gap-3">
+                <div class="flex place-content-between">
+                    <div class="font-bold flex gap-1">
+                        <span class="material-symbols-outlined text-blue-500">chair</span>
+                        <h5 class="">Plan Cabine 20 place</h5>
+                    </div>
+                    <p class="bg-blue-200 rounded-xl px-3 text-blue-500">20 Sieges Total</p>
+                </div>
+
+                <div class="flex place-content-between bg-blue-100 h-10 mx-2 my-6 px-4 rounded-xl items-center">
+                    <p>Poste Conducteur</p>
+                    <p>AVANT DU BUS</p>
+                </div>
+
+                <article id="places">
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 1</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 2</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 3</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 4</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 5</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 6</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 7</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 8</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 9</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 10</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 11</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 12</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 13</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 14</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 15</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 16</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 17</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 18</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 19</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+                    <div id="card" class=" border-orange-300 bg-blue-200 border-3 rounded-xl w-22 px-2 py-2 text-center">
+                        <h6 class="font-semibold">Siege 20</h6>
+                        <span class="material-symbols-outlined bg-orange-300 rounded-4xl px-2 py-2">living</span>
+                        <p>Libre</p>
+                    </div>
+            
+                </article>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="flex place-content-center content-end h-15 bg-blue-800 pt-5 rounded-t-2xl">
+        <article class="flex content-end text-blue-50 text-xs">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing2026.</p>
+        </article>
+    </footer>
+</body>
+
+</html>
