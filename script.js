@@ -27,29 +27,67 @@ const Supprimer = document.getElementById('Supprimer');
 
 //element capined
 
-const cards = document.getElementById('card')
+const cards = document.querySelectorAll('#card')
 const cardLibre = document.getElementById('cardLibre');
 
-//main
+
+//////////main
+
+///prb reload
 
 
-
-function remplirSeiges(){
+function remplirSeiges() {
     selectSiege.innerHTML = '<option value="">-- Automatique (1er libre) --</option>';
     NouveauSiege.innerHTML = '<option class="" >-- choisir un nouveau siege</option>';
-    for(let i = 0 ; i < Totalplace-1 ; i++){
-        const option1= document.createElement('option');
-        option1.value = i+1;
-        option1.textContent = `siege ${i+1}`;
+    for (let i = 0; i < Totalplace - 1; i++) {
+        const option1 = document.createElement('option');
+        option1.value = i + 1;
+        option1.textContent = `siege ${i + 1}`;
         selectSiege.appendChild(option1);
-        console.log(selectSiege)
-
 
         const option2 = document.createElement('option');
-        option2.value = i+1;
-        option2.textContent = `Siege ${i+1}`;
+        option2.value = i + 1;
+        option2.textContent = `Siege ${i + 1}`;
         NouveauSiege.appendChild(option2);
+
     }
 }
 remplirSeiges();
 
+
+let dataName = [];
+let dataSeat = [];
+
+function reservation() {
+
+    const form = document.getElementById('formulaire');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+
+        let nom = nomPassager.value.trim();
+        let siegeShoisi = selectSiege.value;
+
+        if (nom === "") {
+            alert('Entre un nom');
+            return
+        }
+
+        if (dataName.includes(nom)) {
+            alert('Le nom est deja existe');
+            return;
+        }
+
+        dataName.push(nom);
+        dataSeat.push(siegeShoisi);
+
+        console.log(dataName);
+        console.log(dataSeat);
+
+        alert("Réservation enregistrée !");
+    });
+}
+
+reservation();
+console.log(dataName.value)
+console.log(dataSeat.value)

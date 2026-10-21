@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/input.css">
     <link rel="stylesheet" href="/output.css">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -200,14 +199,14 @@
                     </div>
                 </article>
             </nav>
-            <form class="bg-blue-50 w-[40%] px-4">
+            <form id="formulaire" class="bg-blue-50 w-[40%] px-4">
                 <div>
                     <h3 class="text-xl font-semibold">Reservation d'un place</h3>
                     <div class="flex flex-col  px-4 py-4">
                         <label for="nom" class="">Passager</label>
                         <input type="text" name="nom" id="nomPassager" class="h-8 w-60 rounded-4 bg-blue-100"
                             placeholder="Ex: THomas Martin">
-                        <label for="diege">Siege selectionne</label>
+                        <label for="siege">Siege selectionne</label>
                         <select name="siege" id="selectSiege" class="h-8 w-60 rounded-4 bg-blue-100"
                             placeholder="--siege libre--"></select>
                         <input type="submit" name="" id="confirmer" value="confiemer" class="bg-blue-600 w-30 rounded-2xl ">
@@ -223,7 +222,7 @@
                         <input type="text" name="diege" id="NomPassagerM" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder="Ex: THomas Martin">
                         <label for="passager" class="">Nouveau siege</label>
                         <select name="passager" id="NouveauSiege" class=" h-8 w-60 bg-blue-100"></select>
-                        <input type="button" value="Valider" id="Valider" class="bg-blue-600 h-8 w-30 rounded-2xl">
+                        <input type="submit" value="Valider" id="Valider" class="bg-blue-600 h-8 w-30 rounded-2xl">
                     </div>
                 </div>
 

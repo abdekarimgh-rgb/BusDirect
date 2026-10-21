@@ -10,3 +10,6 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.red{
+    background-color: red;
+}
