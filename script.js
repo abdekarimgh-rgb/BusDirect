@@ -94,6 +94,7 @@ function reservation() {
         }
         if(dataSeat.length >= 20){
             alert('Aucun siege disponible');
+            return;
         }
 
         dataName.push(nom);
@@ -104,5 +105,3 @@ function reservation() {
 }
 
 reservation();
-console.log(dataName.value)
-console.log(dataSeat.value)
