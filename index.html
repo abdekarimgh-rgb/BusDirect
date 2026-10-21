@@ -26,14 +26,17 @@
         </div>
 
         <nav class="text-blue-300 flex gap-3 place-content-between ">
-            <div class="content-center bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
+            <div class="  content-center bg-[#6911D1] w-25 flex flex-col place-content-center rounded-xl border-s-2 my-2">
                 <h4>Libre (80 DH)</h4>
+                <span id="pleceLibre">20</span>
             </div>
-            <div class=" content-center  bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
+            <div class=" content-center  bg-[#6911D1] w-25 flex flex-col place-content-center rounded-xl border-s-2 my-2">
                 <h4>Occupé</h4>
+                <span id="placeOccupe">0</span>
             </div>
-            <div class=" content-center bg-[#6911D1] w-25 flex place-content-center rounded-xl border-s-2 my-2">
+            <div class=" content-center bg-[#6911D1] w-25 flex flex-col place-content-center rounded-xl border-s-2 my-2">
                 <h4>Recet Total</h4>
+                <span id="resetTotal">0</span>
             </div>
             <div class="flex items-center">
                 <span class="material-symbols-outlined font-bold">
@@ -202,12 +205,12 @@
                     <h3 class="text-xl font-semibold">Reservation d'un place</h3>
                     <div class="flex flex-col  px-4 py-4">
                         <label for="nom" class="">Passager</label>
-                        <input type="text" name="nom" class="h-8 w-60 rounded-4 bg-blue-100"
+                        <input type="text" name="nom" id="nomPassager" class="h-8 w-60 rounded-4 bg-blue-100"
                             placeholder="Ex: THomas Martin">
                         <label for="diege">Siege selectionne</label>
-                        <select name="siege" id="" class="h-8 w-60 rounded-4 bg-blue-100"
+                        <select name="siege" id="selectSiege" class="h-8 w-60 rounded-4 bg-blue-100"
                             placeholder="--siege libre--"></select>
-                        <input type="submit" name="" id="" value="confiemer" class="bg-blue-600 w-30 rounded-2xl ">
+                        <input type="submit" name="" id="confirmer" value="confiemer" class="bg-blue-600 w-30 rounded-2xl ">
                     </div>
                 </div>
 
@@ -215,12 +218,12 @@
                     <h3 class="text-xl font-semibold">Modifier une place</h3>
                     <div class="flex flex-col px-4 py-4">
                         <label for="nom" class="">Passager existant</label>
-                        <select name="" id="" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder=""></select>
-                        <label for="diege">Nomde passager</label>
-                        <input type="text" name="diege" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder="Ex: THomas Martin">
+                        <select name="" id="PassagerExistant" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder=""></select>
+                        <label for="diege">Nom de passager</label>
+                        <input type="text" name="diege" id="NomPassagerM" class=" h-8 w-60 rounded-4 bg-blue-100" placeholder="Ex: THomas Martin">
                         <label for="passager" class="">Nouveau siege</label>
-                        <select name="passager" id="" class=" h-8 w-60 bg-blue-100"></select>
-                        <input type="button" value="Valider" class="bg-blue-600 h-8 w-30 rounded-2xl">
+                        <select name="passager" id="NouveauSiege" class=" h-8 w-60 bg-blue-100"></select>
+                        <input type="button" value="Valider" id="Valider" class="bg-blue-600 h-8 w-30 rounded-2xl">
                     </div>
                 </div>
 
