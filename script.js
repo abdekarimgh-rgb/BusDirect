@@ -34,7 +34,7 @@ const cardLibre = document.getElementById('cardLibre');
 
 
 
-function remplirPassagerReserve(){
+function remplirSeiges(){
     selectSiege.innerHTML = '<option value="">-- Automatique (1er libre) --</option>';
     NouveauSiege.innerHTML = '<option class="" >-- choisir un nouveau siege</option>';
     for(let i = 0 ; i < Totalplace-1 ; i++){
@@ -51,4 +51,5 @@ function remplirPassagerReserve(){
         NouveauSiege.appendChild(option2);
     }
 }
-remplirPassagerReserve()
+remplirSeiges();
+
