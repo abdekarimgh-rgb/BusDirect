@@ -49,11 +49,9 @@ function remplirSeiges() {
         option2.value = i + 1;
         option2.textContent = `Siege ${i + 1}`;
         NouveauSiege.appendChild(option2);
-
     }
 }
 remplirSeiges();
-
 
 let dataName = [];
 let dataSeat = [];
@@ -67,7 +65,6 @@ function reservation() {
 
         let nom = nomPassager.value.trim();
         let siegeShoisi = selectSiege.value;
-
         if (nom === "") {
             alert('Entre un nom');
             return
@@ -78,11 +75,29 @@ function reservation() {
             return;
         }
 
+        let siegeFinal = null;
+
+        if(siegeShoisi !== ""){
+            siegeFinal = siegeShoisi;
+            if(dataSeat.includes(siegeFinal.toString())){
+                alert("cette place est deja reserve");
+            }
+        }
+
+        else{
+            for(let i = 1 ; i <= Totalplace ; i++){
+                if(!dataSeat.includes(i)){
+                    siegeFinal = i;
+                    break;
+                }
+            }
+        }
+        if(dataSeat.length >= 20){
+            alert('Aucun siege disponible');
+        }
+
         dataName.push(nom);
         dataSeat.push(siegeShoisi);
-
-        console.log(dataName);
-        console.log(dataSeat);
 
         alert("Réservation enregistrée !");
     });
