@@ -39,7 +39,7 @@ const cardLibre = document.getElementById('cardLibre');
 function remplirSeiges() {
     selectSiege.innerHTML = '<option value="">-- Automatique (1er libre) --</option>';
     NouveauSiege.innerHTML = '<option class="" >-- choisir un nouveau siege</option>';
-    for (let i = 0; i < Totalplace - 1; i++) {
+    for (let i = 0; i < Totalplace; i++) {
         const option1 = document.createElement('option');
         option1.value = i + 1;
         option1.textContent = `siege ${i + 1}`;
@@ -53,12 +53,12 @@ function remplirSeiges() {
 }
 remplirSeiges();
 
-let dataName = [];
-let dataSeat = [];
+var dataName = [];
+var dataSeat = [];
 
 function reservation() {
 
-    const form = document.getElementById('formulaire');
+    const form = document.getElementById('form1');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -90,7 +90,6 @@ function reservation() {
         //place auto
 
         else {
-            console.log('test')
             for (let i = 1; i <= Totalplace; i++) {
                 if (!dataSeat.includes(i.toString())) {
                     siegeFinal = i.toString();
@@ -98,6 +97,7 @@ function reservation() {
                 }
             }
         }
+
         if (dataSeat.length >= 20) {
             alert('Aucun siege disponible');
             return;
@@ -105,6 +105,9 @@ function reservation() {
 
         dataName.push(nom);
         dataSeat.push(siegeFinal);
+
+        nomPassager.value = "";
+        selectSiege.value = "";
 
         alert("Réservation enregistrée !");
 
@@ -120,16 +123,92 @@ function reservation() {
         let totalOccupe = dataSeat.length;
         placeOccupe.textContent = totalOccupe;
 
-        let TotalLibre = 20 - totalOccupe ;
+        let TotalLibre = 20 - totalOccupe;
         placeLibre.textContent = (TotalLibre);
 
 
         let toltalrecet = totalOccupe * 80;
-        resetTotal.textContent = (toltalrecet+'.00DH')
+        resetTotal.textContent = (toltalrecet + '.00DH');
+
+        remplisagePassager();
+    });
+
+}
+reservation();
+
+//remplissage===============================
+
+function remplisagePassager() {
+    PassagerExistant.innerHTML = '<option value="">-- Nom de passager</option>';
+
+    for (let i = 0; i < dataSeat.length; i++) {
+        const option3 = document.createElement('option');
+        option3.value = dataName[i];
+        option3.textContent = dataName[i];
+        PassagerExistant.appendChild(option3);
+    }
+}
+
+remplisagePassager();
+
+//modification==============================
+
+function modification() {
+    const form2 = document.getElementById('form2');
+    form2.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        let nomChoisi = PassagerExistant.value.trim();
+        let nouveauNam = NomPassagerM.value.trim();
+        let nouveauSiege = NouveauSiege.value;
+
+        if (nomChoisi === "") {
+            alert('choisir un dans la liste');
+        }
+
+        let position = dataName.indexOf(nomChoisi);
+        let oldSiege = dataSeat[position];
+
+        let nomfinal;
+        if (nouveauNam !== "") {
+            nomfinal =  nomChoisi;   
+            }
+
+        else{
+            nomfinal = nouveauNam;
+        }
+
+        let siegeFinal;
+        if(nouveauSiege !== ""){
+            siegeFinal = oldSiege;
+        }
+        else{
+            siegeFinal = nouveauSiege;
+        }
+
+        if(dataSeat.includes(siegeFinal) && siegeFinal !== oldSiege){
+            alert('cette place est deja reserve');
+            return;
+        }
+
+        const XPlace = document.getElementById(`place-${oldSiege}`);
+        XPlace.classList.remove('bg-orange-400');
+        XPlace.classList.add('bg-blue-200');
+        XPlace.querySelector('p').textContent = 'Libre';
 
 
-        console.log(dataSeat)
+        const NPlace = document.getElementById(`place-${siegeFinal}`);
+        NPlace.classList.remove('bg-blue-200');
+        NPlace.classList.remove('bg-orange-400');
+        NPlace.querySelector('p').textContent = nouveauNam;
+
     });
 }
 
-reservation();
+modification();
+
+
+
+
+
+
