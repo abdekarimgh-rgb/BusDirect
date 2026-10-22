@@ -101,6 +101,14 @@ function reservation() {
         dataSeat.push(siegeShoisi);
 
         alert("Réservation enregistrée !");
+
+        const tragetPlace = document.getElementById(`place-${siegeFinal}`);
+
+            tragetPlace.classList.remove('bg-blue-200')
+            tragetPlace.classList.add('bg-orange-400')
+
+            const status = tragetPlace.querySelector('p');
+            p.textContent = nom;
     });
 }
 
