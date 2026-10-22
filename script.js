@@ -77,22 +77,23 @@ function reservation() {
 
         let siegeFinal = null;
 
-
         //choisi un place
 
         if (siegeShoisi !== "") {
-            siegeFinal = siegeShoisi;
+            siegeFinal = parseInt(siegeShoisi);
             if (dataSeat.includes(siegeFinal.toString())) {
                 alert("cette place est deja reserve");
+                return;
             }
         }
 
         //place auto
 
         else {
+            console.log('test')
             for (let i = 1; i <= Totalplace; i++) {
                 if (!dataSeat.includes(i.toString())) {
-                    siegeFinal = i;
+                    siegeFinal = i.toString();
                     break;
                 }
             }
@@ -103,7 +104,7 @@ function reservation() {
         }
 
         dataName.push(nom);
-        dataSeat.push(siegeShoisi);
+        dataSeat.push(siegeFinal);
 
         alert("Réservation enregistrée !");
 
@@ -125,6 +126,9 @@ function reservation() {
 
         let toltalrecet = totalOccupe * 80;
         resetTotal.textContent = (toltalrecet+'.00DH')
+
+
+        console.log(dataSeat)
     });
 }
 
