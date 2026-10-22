@@ -77,22 +77,27 @@ function reservation() {
 
         let siegeFinal = null;
 
-        if(siegeShoisi !== ""){
+
+        //choisi un place
+
+        if (siegeShoisi !== "") {
             siegeFinal = siegeShoisi;
-            if(dataSeat.includes(siegeFinal.toString())){
+            if (dataSeat.includes(siegeFinal.toString())) {
                 alert("cette place est deja reserve");
             }
         }
 
-        else{
-            for(let i = 1 ; i <= Totalplace ; i++){
-                if(!dataSeat.includes(i)){
+        //place auto
+
+        else {
+            for (let i = 1; i <= Totalplace; i++) {
+                if (!dataSeat.includes(i.toString())) {
                     siegeFinal = i;
                     break;
                 }
             }
         }
-        if(dataSeat.length >= 20){
+        if (dataSeat.length >= 20) {
             alert('Aucun siege disponible');
             return;
         }
@@ -102,13 +107,24 @@ function reservation() {
 
         alert("Réservation enregistrée !");
 
-        const tragetPlace = document.getElementById(`place-${siegeFinal}`);
+        const targetPlace = document.getElementById(`place-${siegeFinal}`);
 
-            tragetPlace.classList.remove('bg-blue-200')
-            tragetPlace.classList.add('bg-orange-400')
+        targetPlace.classList.remove('bg-blue-200');
+        targetPlace.classList.add('bg-orange-400');
 
-            const status = tragetPlace.querySelector('p');
-            p.textContent = nom;
+        const statusPlace = targetPlace.querySelector('p');
+        statusPlace.textContent = nom;
+
+
+        let totalOccupe = dataSeat.length;
+        placeOccupe.textContent = totalOccupe;
+
+        let TotalLibre = 20 - totalOccupe ;
+        placeLibre.textContent = (TotalLibre);
+
+
+        let toltalrecet = totalOccupe * 80;
+        resetTotal.textContent = (toltalrecet+'.00DH')
     });
 }
 
