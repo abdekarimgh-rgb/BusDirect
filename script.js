@@ -35,7 +35,7 @@ const cardLibre = document.getElementById('cardLibre');
 
 function remplirSeiges() {
     selectSiege.innerHTML = '<option value="">-- Automatique (1er libre) --</option>';
-    NouveauSiege.innerHTML = '<option class="" >-- choisir un nouveau siege</option>';
+    NouveauSiege.innerHTML = '<option value="" >-- choisir un nouveau siege</option>';
     for (let i = 0; i < Totalplace; i++) {
         const option1 = document.createElement('option');
         option1.value = i + 1;
@@ -58,6 +58,7 @@ function reservation() {
     const form = document.getElementById('form1');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+
 
         let nom = nomPassager.value.trim();
         let siegeShoisi = selectSiege.value;
@@ -126,7 +127,7 @@ function reservation() {
         let toltalrecet = totalOccupe * 80;
         resetTotal.textContent = (toltalrecet + '.00DH');
 
-        remplisagePassagerModif();
+        remplisagePassagerModif_Supp();
     });
 
 }
@@ -134,14 +135,22 @@ function reservation() {
 
 //remplissage===============================
 
-function remplisagePassagerModif() {
+function remplisagePassagerModif_Supp() {
+
     PassagerExistant.innerHTML = '<option value="">-- Nom de passager</option>';
+    PassagerReserve.innerHTML = '<option value="">--nom de de passager</option>';
 
     for (let i = 0; i < dataSeat.length; i++) {
         const option3 = document.createElement('option');
         option3.value = dataName[i];
         option3.textContent = dataName[i];
         PassagerExistant.appendChild(option3);
+
+
+        const option4 = document.createElement('option');
+        option4.value = dataName[i];
+        option4.textContent = dataName[i];
+        PassagerReserve.appendChild(option4);
     }
 }
 
@@ -154,12 +163,13 @@ function modification() {
     form2.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        let nomChoisi = PassagerExistant.value.trim();
+        let nomChoisi = PassagerExistant.value;
         let nouveauNam = NomPassagerM.value.trim();
         let nouveauSiege = NouveauSiege.value;
 
         if (nomChoisi === "") {
             alert('choisir un dans la liste');
+            return
         }
 
         let position = dataName.indexOf(nomChoisi);
@@ -174,15 +184,13 @@ function modification() {
             nomfinal = nomChoisi;
         }
 
-        console.log(nomfinal + 'nomfinal')
-        console.log(nouveauNam + 'nouveauNam')
-
-
         let siegeFinal;
         if (nouveauSiege !== "") {
             siegeFinal = nouveauSiege;
+            console.log(siegeFinal)
         }
         else {
+            console.log("test 1111111111")
             siegeFinal = oldSiege;
         }
 
@@ -192,42 +200,50 @@ function modification() {
         }
 
         const XPlace = document.getElementById(`place-${oldSiege}`);
-        
+        if (XPlace) {
             XPlace.classList.remove('bg-orange-400');
             XPlace.classList.add('bg-blue-200');
             XPlace.querySelector('p').textContent = 'Libre';
-        
+        }
 
         const NPlace = document.getElementById(`place-${siegeFinal}`);
-        if(nomfinal !== ""){
+        if (NPlace) {
             NPlace.classList.remove('bg-blue-200');
             NPlace.classList.add('bg-orange-400');
             NPlace.querySelector('p').textContent = nomfinal;
         }
-        
-        console.log(dataName + '/' + dataSeat)
-
-        console.log("final> " + nomfinal)
-        console.log("final> " + siegeFinal)
 
         dataName[position] = nomfinal;
         dataSeat[position] = siegeFinal;
 
-        console.log("===>" + dataName[position])
-        console.log("===>" + dataSeat[position])
+        console.log(dataName)
+        console.log(dataSeat)
 
-        nouveauNam.value = "";
-        nomChoisi.value = "";
+        NomPassagerM.value = "";
+        PassagerExistant.value = "";
+        NouveauSiege.value = "";
 
-        //remplirSeiges();
-        remplisagePassagerModif();
+        remplirSeiges();
+        remplisagePassagerModif_Supp();
     });
+}
+
+
+function suppression() {
+    const form3 = document.getElementById('form3');
+    form3.addEventListener('submit', function (e) {
+        e.preventDefault();
+        console.log(PassagerReserve.value);
+        let nomChoisi = PassagerReserve.value;
+
+        let positionNam = dataName.indexOf(nomChoisi);
+        console.log(positionNam)
+        remplisagePassagerModif_Supp();
+    })
 }
 
 remplirSeiges();
 reservation();
-remplisagePassagerModif();
+remplisagePassagerModif_Supp();
 modification();
-
-
-
+suppression();
