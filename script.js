@@ -33,9 +33,6 @@ const cardLibre = document.getElementById('cardLibre');
 
 //////////main
 
-///prb reload
-
-
 function remplirSeiges() {
     selectSiege.innerHTML = '<option value="">-- Automatique (1er libre) --</option>';
     NouveauSiege.innerHTML = '<option class="" >-- choisir un nouveau siege</option>';
@@ -51,7 +48,7 @@ function remplirSeiges() {
         NouveauSiege.appendChild(option2);
     }
 }
-remplirSeiges();
+
 
 var dataName = [];
 var dataSeat = [];
@@ -61,7 +58,6 @@ function reservation() {
     const form = document.getElementById('form1');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-
 
         let nom = nomPassager.value.trim();
         let siegeShoisi = selectSiege.value;
@@ -130,15 +126,15 @@ function reservation() {
         let toltalrecet = totalOccupe * 80;
         resetTotal.textContent = (toltalrecet + '.00DH');
 
-        remplisagePassager();
+        remplisagePassagerModif();
     });
 
 }
-reservation();
+
 
 //remplissage===============================
 
-function remplisagePassager() {
+function remplisagePassagerModif() {
     PassagerExistant.innerHTML = '<option value="">-- Nom de passager</option>';
 
     for (let i = 0; i < dataSeat.length; i++) {
@@ -149,7 +145,7 @@ function remplisagePassager() {
     }
 }
 
-remplisagePassager();
+
 
 //modification==============================
 
@@ -171,44 +167,67 @@ function modification() {
 
         let nomfinal;
         if (nouveauNam !== "") {
-            nomfinal =  nomChoisi;   
-            }
-
-        else{
             nomfinal = nouveauNam;
         }
 
-        let siegeFinal;
-        if(nouveauSiege !== ""){
-            siegeFinal = oldSiege;
-        }
-        else{
-            siegeFinal = nouveauSiege;
+        else {
+            nomfinal = nomChoisi;
         }
 
-        if(dataSeat.includes(siegeFinal) && siegeFinal !== oldSiege){
+        console.log(nomfinal + 'nomfinal')
+        console.log(nouveauNam + 'nouveauNam')
+
+
+        let siegeFinal;
+        if (nouveauSiege !== "") {
+            siegeFinal = nouveauSiege;
+        }
+        else {
+            siegeFinal = oldSiege;
+        }
+
+        if (nouveauSiege !== "" && dataSeat.includes(siegeFinal) && siegeFinal !== oldSiege) {
             alert('cette place est deja reserve');
             return;
         }
 
         const XPlace = document.getElementById(`place-${oldSiege}`);
-        XPlace.classList.remove('bg-orange-400');
-        XPlace.classList.add('bg-blue-200');
-        XPlace.querySelector('p').textContent = 'Libre';
-
+        
+            XPlace.classList.remove('bg-orange-400');
+            XPlace.classList.add('bg-blue-200');
+            XPlace.querySelector('p').textContent = 'Libre';
+        
 
         const NPlace = document.getElementById(`place-${siegeFinal}`);
-        NPlace.classList.remove('bg-blue-200');
-        NPlace.classList.remove('bg-orange-400');
-        NPlace.querySelector('p').textContent = nouveauNam;
+        if(nomfinal !== ""){
+            NPlace.classList.remove('bg-blue-200');
+            NPlace.classList.add('bg-orange-400');
+            NPlace.querySelector('p').textContent = nomfinal;
+        }
+        
+        console.log(dataName + '/' + dataSeat)
 
+        console.log("final> " + nomfinal)
+        console.log("final> " + siegeFinal)
+
+        dataName[position] = nomfinal;
+        dataSeat[position] = siegeFinal;
+
+        console.log("===>" + dataName[position])
+        console.log("===>" + dataSeat[position])
+
+        nouveauNam.value = "";
+        nomChoisi.value = "";
+
+        //remplirSeiges();
+        remplisagePassagerModif();
     });
 }
 
+remplirSeiges();
+reservation();
+remplisagePassagerModif();
 modification();
-
-
-
 
 
 
