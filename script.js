@@ -62,9 +62,10 @@ function reservation() {
 
         let nom = nomPassager.value.trim();
         let siegeShoisi = selectSiege.value;
+
         if (nom === "") {
             alert('Entre un nom');
-            return
+            return;
         }
 
         if (dataName.includes(nom)) {
@@ -107,15 +108,17 @@ function reservation() {
         selectSiege.value = "";
 
         alert("Réservation enregistrée !");
-
+        console.log(siegeFinal)
+        console.log(dataName)
+        console.log(dataSeat)
         const targetPlace = document.getElementById(`place-${siegeFinal}`);
-
-        targetPlace.classList.remove('bg-blue-200');
-        targetPlace.classList.add('bg-orange-400');
-
-        const statusPlace = targetPlace.querySelector('p');
-        statusPlace.textContent = nom;
-
+        if (targetPlace) {
+            targetPlace.classList.remove('bg-blue-200');
+            targetPlace.classList.add('bg-orange-400');
+            console.log('test')
+            const statusPlace = targetPlace.querySelector('p');
+            statusPlace.textContent = nom;
+        }
 
         let totalOccupe = dataSeat.length;
         placeOccupe.textContent = totalOccupe;
@@ -226,8 +229,11 @@ function modification() {
         PassagerExistant.value = "";
         NouveauSiege.value = "";
 
-        //remplirSeiges();
-        //remplisagePassagerModif_Supp();
+        console.log(dataName)
+        console.log(dataSeat)
+
+        remplirSeiges();
+        remplisagePassagerModif_Supp();
     });
 }
 
@@ -244,7 +250,7 @@ function suppression() {
         }
 
         let positionNam = dataName.indexOf(nomChoisi);
-        if(positionNam === -1){
+        if (positionNam === -1) {
             alert("cette nom n'existe pas");
             return;
         }
