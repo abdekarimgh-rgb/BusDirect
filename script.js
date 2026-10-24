@@ -178,6 +178,10 @@ function modification() {
         let nomfinal;
         if (nouveauNam !== "") {
             nomfinal = nouveauNam;
+            if (dataName.includes(nomfinal)) {
+                alert('le nom est deja existe');
+                return;
+            }
         }
 
         else {
@@ -190,7 +194,6 @@ function modification() {
             console.log(siegeFinal)
         }
         else {
-            console.log("test 1111111111")
             siegeFinal = oldSiege;
         }
 
@@ -223,11 +226,10 @@ function modification() {
         PassagerExistant.value = "";
         NouveauSiege.value = "";
 
-        remplirSeiges();
-        remplisagePassagerModif_Supp();
+        //remplirSeiges();
+        //remplisagePassagerModif_Supp();
     });
 }
-
 
 function suppression() {
     const form3 = document.getElementById('form3');
@@ -236,10 +238,41 @@ function suppression() {
         console.log(PassagerReserve.value);
         let nomChoisi = PassagerReserve.value;
 
+        if (nomChoisi === "") {
+            alert('selectionne un nom');
+            return;
+        }
+
         let positionNam = dataName.indexOf(nomChoisi);
-        console.log(positionNam)
+        if(positionNam === -1){
+            alert("cette nom n'existe pas");
+            return;
+        }
+        let Siege = dataSeat[positionNam];
+
+        dataName.splice(positionNam, 1);
+        dataSeat.splice(positionNam, 1);
+
+        let totalOccupe = dataSeat.length;
+        placeOccupe.textContent = totalOccupe;
+
+        let TotalLibre = 20 - totalOccupe;
+        placeLibre.textContent = (TotalLibre);
+
+
+        let toltalrecet = totalOccupe * 80;
+        resetTotal.textContent = (toltalrecet + '.00DH');
+
+        const supp = document.getElementById(`place-${Siege}`);
+        console.log(`place-${Siege}`);
+        if (supp) {
+            supp.classList.remove('bg-orange-400');
+            supp.classList.add('bg-blue-200');
+            supp.querySelector('p').textContent = 'Libre';
+        }
+
         remplisagePassagerModif_Supp();
-    })
+    });
 }
 
 remplirSeiges();
