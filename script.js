@@ -48,7 +48,6 @@ function remplirSeiges() {
     }
 }
 
-
 function message(text) {
     const body = document.querySelector('body');
     const message = document.createElement('div');
@@ -60,7 +59,6 @@ function message(text) {
         message.remove();
     }, 1500)
 }
-
 
 var dataName = [];
 var dataSeat = [];
@@ -182,6 +180,11 @@ function modification() {
         let nouveauNam = NomPassagerM.value.trim();
         let nouveauSiege = NouveauSiege.value;
 
+        if(nouveauNam === "" && nouveauSiege === ""){
+            message('remplis ou moins deux chemps!');
+            return;
+        }
+
         if (nomChoisi === "") {
             message('choisir un dans la liste');
             return;
@@ -295,8 +298,6 @@ function suppression() {
         remplisagePassagerModif_Supp();
     });
 }
-
-
 
 remplirSeiges();
 reservation();
