@@ -277,6 +277,8 @@ function suppression() {
             supp.querySelector('p').textContent = 'Libre';
         }
 
+        
+
         remplisagePassagerModif_Supp();
     });
 }

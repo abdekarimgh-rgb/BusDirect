@@ -5,18 +5,27 @@
     justify-content: center;
 }
 
+.card{
+    justify-self: center;
+}
+
 #choix{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 .red{
-    background-color: red;
+    background-color: #ff0000;
 }
 
+.cabine-forms{
+    display: flex;
+    flex-direction: column-reverse;
+}
 @media (min-width : 768px){
     .cabine-forms{
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
+    
 }
