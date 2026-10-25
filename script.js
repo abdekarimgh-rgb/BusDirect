@@ -27,7 +27,7 @@ const Supprimer = document.getElementById('Supprimer');
 
 //element capined
 
-const cards = document.querySelectorAll('#card')
+const cards = document.querySelectorAll('.card')
 const cardLibre = document.getElementById('cardLibre');
 
 //////////main
@@ -60,8 +60,22 @@ function message(text) {
     }, 1500)
 }
 
-var dataName = [];
-var dataSeat = [];
+var dataName = JSON.parse(localStorage.getItem("busNames")) || [];
+var dataSeat = JSON.parse(localStorage.getItem("busSeats")) || [];
+
+
+function returnStyle(){
+    cards.forEach(function(element, index){
+         const targetPlace = document.getElementById(`place-${dataSeat[index]}`);
+            if (targetPlace) {
+            targetPlace.classList.remove('bg-blue-200');
+            targetPlace.classList.add('bg-orange-400');
+            const statusPlace = targetPlace.querySelector('p');
+            statusPlace.textContent = dataName[index];
+        }
+    })
+}
+
 
 function reservation() {
 
@@ -114,18 +128,17 @@ function reservation() {
         dataName.push(nom);
         dataSeat.push(siegeFinal);
 
+        localStorage.setItem("busNames", JSON.stringify(dataName));
+        localStorage.setItem("busSeats", JSON.stringify(dataSeat));
+
         nomPassager.value = "";
         selectSiege.value = "";
     
         alert("Réservation enregistrée !");
-        console.log(siegeFinal)
-        console.log(dataName)
-        console.log(dataSeat)
         const targetPlace = document.getElementById(`place-${siegeFinal}`);
         if (targetPlace) {
             targetPlace.classList.remove('bg-blue-200');
             targetPlace.classList.add('bg-orange-400');
-            console.log('test')
             const statusPlace = targetPlace.querySelector('p');
             statusPlace.textContent = nom;
         }
@@ -238,6 +251,9 @@ function modification() {
         dataName[position] = nomfinal;
         dataSeat[position] = siegeFinal;
 
+        localStorage.setItem("busNames", JSON.stringify(dataName));
+        localStorage.setItem("busSeats", JSON.stringify(dataSeat));
+
         console.log(dataName)
         console.log(dataSeat)
 
@@ -277,6 +293,9 @@ function suppression() {
         dataName.splice(positionNam, 1);
         dataSeat.splice(positionNam, 1);
 
+        localStorage.setItem("busNames", JSON.stringify(dataName));
+        localStorage.setItem("busSeats", JSON.stringify(dataSeat));
+
         let totalOccupe = dataSeat.length;
         placeOccupe.textContent = totalOccupe;
 
@@ -299,6 +318,8 @@ function suppression() {
     });
 }
 
+
+returnStyle();
 remplirSeiges();
 reservation();
 remplisagePassagerModif_Supp();
