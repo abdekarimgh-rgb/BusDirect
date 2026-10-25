@@ -29,3 +29,23 @@
     }
     
 }
+
+/* element dom */
+
+.messageStyle{
+    position: fixed;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    height: 80px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(to left, rgba(255, 166, 0, 0.385), rgba(0, 0, 255, 0.166));
+    box-shadow: 0px 1px 10px;
+    z-index: 2;
+}
