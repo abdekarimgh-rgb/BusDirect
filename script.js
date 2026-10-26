@@ -49,12 +49,12 @@ function remplirSeiges() {
 }
 
 function message(text) {
-    const body = document.querySelector('body');
+    const formulaire = document.querySelector('#formulaire');
     const message = document.createElement('div');
     message.classList.add('messageStyle');
     message.textContent = text
     message.style.color = "white"
-    body.append(message);
+    formulaire.append(message);
     setTimeout(function () {
         message.remove();
     }, 1500)
@@ -63,26 +63,96 @@ function message(text) {
 var dataName = JSON.parse(localStorage.getItem("busNames")) || [];
 var dataSeat = JSON.parse(localStorage.getItem("busSeats")) || [];
 
-
-function returnStyle(){
-    cards.forEach(function(element, index){
-         const targetPlace = document.getElementById(`place-${dataSeat[index]}`);
-            if (targetPlace) {
+function returnStyle() {
+    cards.forEach(function (element, index) {
+        const targetPlace = document.getElementById(`place-${dataSeat[index]}`);
+        if (targetPlace) {
             targetPlace.classList.remove('bg-blue-200');
             targetPlace.classList.add('bg-orange-400');
+            //targetPlace.setAttribute('draggable', 'true');
             const statusPlace = targetPlace.querySelector('p');
             statusPlace.textContent = dataName[index];
         }
     })
 }
 
+let drag = null;
+
+function dragDrop() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(function (card) {
+        card.addEventListener('dragstart', function (e) {
+            const testDrag = this.querySelector('.cardLibre').textContent
+
+            if (testDrag === 'Libre') {
+                message('la place est vide');
+                return;
+            }
+            drag = card.querySelector('.cardLibre').textContent;
+            card.querySelector('.cardLibre').textContent = 'Libre'
+            
+        })
+
+        card.addEventListener('dragend', function (e) {
+            e.preventDefault();
+            drag = null;
+        })
+
+        cards.forEach(function (card) {
+            card.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                let cardLibre = drag;
+
+            });
+
+            card.addEventListener('dragleave', function (e) {
+                this.style.background = "#C7D2FE";
+            });
+
+            card.addEventListener('drop', function () {
+                const testDrop = card.dataset.value;
+                
+                if(dataSeat.includes(testDrop)){
+                    message('place deja reserve!');
+                    return;
+                }
+
+                if (drag) {
+
+                    let position = dataName.indexOf(drag);
+                    console.log(position)
+
+                    console.log(dataName)
+                    console.log(dataSeat)
+
+                    dataName.splice(position, 1);
+                    dataSeat.splice(position, 1);
+
+                    let seat = this.dataset.value;
+
+                    dataName.push(drag);
+                    dataSeat.push(seat);
+
+                    console.log(dataName)
+                    console.log(dataSeat)
+
+                    this.querySelector('.cardLibre').textContent = drag;
+                }
+            })
+        });
+    });
+    localStorage.setItem('busNames', JSON.stringify(dataName))
+    localStorage.setItem('busSeats', JSON.stringify(dataSeat))
+
+}
+
+dragDrop()
 
 function reservation() {
 
     const form = document.getElementById('form1');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-
 
         let nom = nomPassager.value.trim();
         let siegeShoisi = selectSiege.value;
@@ -133,7 +203,7 @@ function reservation() {
 
         nomPassager.value = "";
         selectSiege.value = "";
-    
+
         alert("Réservation enregistrée !");
         const targetPlace = document.getElementById(`place-${siegeFinal}`);
         if (targetPlace) {
@@ -193,7 +263,7 @@ function modification() {
         let nouveauNam = NomPassagerM.value.trim();
         let nouveauSiege = NouveauSiege.value;
 
-        if(nouveauNam === "" && nouveauSiege === ""){
+        if (nouveauNam === "" && nouveauSiege === "") {
             message('remplis ou moins deux chemps!');
             return;
         }
