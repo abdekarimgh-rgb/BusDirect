@@ -69,9 +69,25 @@ function returnStyle() {
         if (targetPlace) {
             targetPlace.classList.remove('bg-blue-200');
             targetPlace.classList.add('bg-orange-400');
-            //targetPlace.setAttribute('draggable', 'true');
+
             const statusPlace = targetPlace.querySelector('p');
             statusPlace.textContent = dataName[index];
+        }
+    })
+}
+
+function adapteStyle() {
+    cards.forEach(function (element) {
+        let seat = parseInt(element.dataset.value)
+
+        if (dataSeat.map(Number).includes(seat)) {
+            element.classList.remove('bg-blue-200');
+            element.classList.add('bg-orange-400');
+        }
+        else {
+            element.classList.remove('bg-orange-400');
+            element.classList.add('bg-blue-200');
+            element.querySelector('.cardLibre').textContent = 'Libre'
         }
     })
 }
@@ -81,6 +97,7 @@ let drag = null;
 function dragDrop() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(function (card) {
+
         card.addEventListener('dragstart', function (e) {
             const testDrag = this.querySelector('.cardLibre').textContent
 
@@ -89,64 +106,65 @@ function dragDrop() {
                 return;
             }
             drag = card.querySelector('.cardLibre').textContent;
-            card.querySelector('.cardLibre').textContent = 'Libre'
-            
+            //card.querySelector('.cardLibre').textContent = 'Libre'
         })
 
         card.addEventListener('dragend', function (e) {
             e.preventDefault();
             drag = null;
+
         })
 
-        cards.forEach(function (card) {
-            card.addEventListener('dragover', function (e) {
+        cards.forEach(function (element) {
+            element.addEventListener('dragover', function (e) {
                 e.preventDefault();
-                let cardLibre = drag;
+                element.style.backgroudColor = 'red'
+            })
+        });
 
-            });
+        card.addEventListener('dragleave', function (e) {
 
-            card.addEventListener('dragleave', function (e) {
-                this.style.background = "#C7D2FE";
-            });
+        });
 
-            card.addEventListener('drop', function () {
-                const testDrop = card.dataset.value;
-                
-                if(dataSeat.includes(testDrop)){
-                    message('place deja reserve!');
-                    return;
-                }
+        card.addEventListener('drop', function () {
+            const verificateurSeat = parseInt(card.dataset.value);
 
+            if (dataSeat.map(Number).includes(verificateurSeat)) {
+                message('place deja reserve!');
+                return;
+            }
+
+            else {
                 if (drag) {
-
                     let position = dataName.indexOf(drag);
-                    console.log(position)
-
-                    console.log(dataName)
-                    console.log(dataSeat)
 
                     dataName.splice(position, 1);
                     dataSeat.splice(position, 1);
 
                     let seat = this.dataset.value;
-
-                    dataName.push(drag);
-                    dataSeat.push(seat);
-
-                    console.log(dataName)
-                    console.log(dataSeat)
-
+                    if (dataSeat.includes(parseInt(seat))) {
+                        console.log('entrer')
+                        return;
+                    }
+                    else {
+                        dataName.push(drag);
+                        dataSeat.push(seat);
+                    
                     this.querySelector('.cardLibre').textContent = drag;
+
+                    localStorage.setItem('busNames', JSON.stringify(dataName))
+                    localStorage.setItem('busSeats', JSON.stringify(dataSeat))
+                    adapteStyle();
+                    }
                 }
-            })
+            }
         });
     });
-    localStorage.setItem('busNames', JSON.stringify(dataName))
-    localStorage.setItem('busSeats', JSON.stringify(dataSeat))
-
 }
 
-dragDrop()
+dragDrop();
+
+//adapteStyle();
 
 function reservation() {
 
@@ -395,3 +413,4 @@ reservation();
 remplisagePassagerModif_Supp();
 modification();
 suppression();
+adapteStyle();
