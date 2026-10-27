@@ -155,7 +155,6 @@ function dragDrop() {
 
                     let seat = this.dataset.value;
                     if (dataSeat.includes(parseInt(seat))) {
-                        console.log('entrer')
                         return;
                     }
                     else {
@@ -322,7 +321,6 @@ function modification() {
         let siegeFinal;
         if (nouveauSiege !== "") {
             siegeFinal = nouveauSiege;
-            console.log(siegeFinal)
         }
         else {
             siegeFinal = oldSiege;
@@ -354,15 +352,9 @@ function modification() {
         localStorage.setItem("busNames", JSON.stringify(dataName));
         localStorage.setItem("busSeats", JSON.stringify(dataSeat));
 
-        console.log(dataName)
-        console.log(dataSeat)
-
         NomPassagerM.value = "";
         PassagerExistant.value = "";
         NouveauSiege.value = "";
-
-        console.log(dataName)
-        console.log(dataSeat)
 
         remplirSeiges();
         remplisagePassagerModif_Supp();
@@ -373,7 +365,6 @@ function suppression() {
     const form3 = document.getElementById('form3');
     form3.addEventListener('submit', function (e) {
         e.preventDefault();
-        console.log(PassagerReserve.value);
         let nomChoisi = PassagerReserve.value;
 
         if (nomChoisi === "") {
@@ -407,7 +398,6 @@ function suppression() {
         resetTotal.textContent = (toltalrecet + '.00DH');
 
         const supp = document.getElementById(`place-${Siege}`);
-        console.log(`place-${Siege}`);
         if (supp) {
             supp.classList.remove('bg-orange-400');
             supp.classList.add('bg-blue-200');
