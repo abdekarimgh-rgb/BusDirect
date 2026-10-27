@@ -118,7 +118,7 @@ Le projet vise à respecter les bonnes pratiques du développement web :
 ## 10. Liens du projet
 
 - **Repository GitHub :** https://github.com/abdekarimgh-rgb/BusDirect
-- **Site déployé sur Vercel :** https://busdirect-b1hy.vercel.app/
+- **Site déployé sur github pages :** https://abdekarimgh-rgb.github.io/BusDirect/
 - **Planification des tâches :** https://trello.com/invite/b/6ad61254c9ce311f7f40fe48/ATTIc82f4142ef10ee35a2774db0ab511f15777FEE1B/busdirect
 
 ## 11. Auteur et contexte
