@@ -92,6 +92,18 @@ function adapteStyle() {
     })
 }
 
+function staistique() {
+    let totalOccupe = dataSeat.length;
+    placeOccupe.textContent = totalOccupe;
+
+    let TotalLibre = 20 - totalOccupe;
+    placeLibre.textContent = (TotalLibre);
+
+
+    let toltalrecet = totalOccupe * 80;
+    resetTotal.textContent = (toltalrecet + '.00DH');
+}
+
 let drag = null;
 
 function dragDrop() {
@@ -149,12 +161,12 @@ function dragDrop() {
                     else {
                         dataName.push(drag);
                         dataSeat.push(seat);
-                    
-                    this.querySelector('.cardLibre').textContent = drag;
 
-                    localStorage.setItem('busNames', JSON.stringify(dataName))
-                    localStorage.setItem('busSeats', JSON.stringify(dataSeat))
-                    adapteStyle();
+                        this.querySelector('.cardLibre').textContent = drag;
+
+                        localStorage.setItem('busNames', JSON.stringify(dataName))
+                        localStorage.setItem('busSeats', JSON.stringify(dataSeat))
+                        adapteStyle();
                     }
                 }
             }
@@ -406,7 +418,7 @@ function suppression() {
     });
 }
 
-
+staistique();
 returnStyle();
 remplirSeiges();
 reservation();
